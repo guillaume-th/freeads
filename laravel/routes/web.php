@@ -26,8 +26,10 @@ Route::get('/freeads', function () {
    return IndexController::ShowIndex();
 });
 Route::post('/freeads', function () {
-    return 'Votre email est ' . $_POST['email'];
-    return 'Votre password est ' . $_POST['password'];
+    return 'Votre email est ' . $_POST['email'].'Votre password est ' . $_POST['password'];
+});
+Route::post('/annonce', function () {
+    return 'Votre titre est ' . $_POST['titre'].'Votre description est ' . $_POST['description'];
 });
 Auth::routes();
 
