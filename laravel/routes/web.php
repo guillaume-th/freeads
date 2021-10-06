@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\IndexController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ConnexionController;
 
 /*
@@ -18,9 +19,6 @@ use App\Http\Controllers\ConnexionController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/', function () {
-    return view('welcome');
-});
 Route::get('/freeads', function () {
     // return view("index");
    return IndexController::ShowIndex();
@@ -31,6 +29,15 @@ Route::post('/freeads', function () {
 Route::post('/annonce', function () {
     return 'Votre titre est ' . $_POST['titre'].'Votre description est ' . $_POST['description'];
 });
-Auth::routes();
+
+Auth::routes(['verify' => true]);
+
+// Route::get('home', function () {
+    
+// })->middleware('verified');
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+// Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
