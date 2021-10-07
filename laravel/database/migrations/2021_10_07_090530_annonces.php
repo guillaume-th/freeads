@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Annonce extends Migration
+class Annonces extends Migration
 {
     /**
      * Run the migrations.
@@ -33,3 +33,4 @@ class Annonce extends Migration
         Schema::dropIfExists('annonce');
     }
 }
+

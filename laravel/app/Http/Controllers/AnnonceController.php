@@ -1,18 +1,23 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\AnnonceModel;
+use App\Models\Annonce;
 use Illuminate\Http\Request;
 
 class AnnonceController extends Controller
 {
-    protected function create(array $data)
+    public static function create(Request $request)
     {
-        return AnnonceModel::create([
-            'titre' => $data['titre'],
-            'description' => $data['description'],
-            'photographie' => $data['photographie'],
-            'prix' => $data['prix'],
+         Annonce::firstOrCreate([
+            'titre' => $request->input('titre'),
+            'description' => $request->input('description'),
+            'photographie' => $request->input('photographie'),
+            'prix' => $request->input('prix'),
         ]);
+        return redirect()->route('home')
+        ->with('success','Product add successfully');
+    }
+    public function show(Request $annonce){
+        return view('show',compact($annonce));
     }
 }

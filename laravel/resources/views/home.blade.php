@@ -20,6 +20,9 @@
         </div>
     </div>
     <br><br>
+    <h1>annonce</h1>
+    <a href="{{ route('show') }}">go to</a>
+    <br><br>
     <h1>Create your annonce !</h1>
     <form method="post" action="/annonce" id="form">
     <!-- <input name="_token" type="hidden" value="{{csrf_token()}}"/> -->
@@ -34,11 +37,12 @@
         <input required type="text" name="prix" id="prix">
         <br><br>
         <label for="photographie">photographie:</label>
-        <input required type="text" name="photographie" id="photographie">
+        <input required type="file" name="photographie" id="photographie" accept="image/png, image/jpeg">
         <br><br>
         <div id="submit">
         <input class="annoncedef" type="submit" name="submit" value="valider">
         </div>
+
 </form>
 </div>
 @endsection

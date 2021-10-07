@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\AnnonceController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ConnexionController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -26,18 +28,19 @@ Route::get('/freeads', function () {
 Route::post('/freeads', function () {
     return 'Votre email est ' . $_POST['email'].'Votre password est ' . $_POST['password'];
 });
-Route::post('/annonce', function () {
-    return 'Votre titre est ' . $_POST['titre'].'Votre description est ' . $_POST['description'];
-});
+// Route::post('/annonce', function () {
+//     AnnonceController::create();
+// });
+Route::post('/annonce', [AnnonceController::class, "create"]);
+// Route::resource('annonce', AnnonceController::class);
+Route::get('/show', function () {
+    return view('show');
+})->name('show');
 
 Auth::routes(['verify' => true]);
 
-// Route::get('home', function () {
-    
-// })->middleware('verified');
-
 Route::get('/home', 'HomeController@index')->name('home');
 
-// Auth::routes();
+Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
