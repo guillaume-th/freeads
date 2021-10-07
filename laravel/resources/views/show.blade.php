@@ -22,7 +22,7 @@
 </div>
 
 
-
+@foreach ($annonce as $annonces)
 <div class="row">
 
 <div class="col-xs-12 col-sm-12 col-md-12">
@@ -31,7 +31,7 @@
 
         <strong>Name:</strong>
 
-        {{ $annonce->titre }}
+        {{ $annonces['titre']}}
 
     </div>
 
@@ -43,7 +43,7 @@
 
         <strong>Details:</strong>
 
-        {{ $annonce->description }}
+        {{ $annonces['description'] }}
 
     </div>
 
@@ -55,7 +55,7 @@
 
         <strong>Image:</strong>
 
-        <img src="/image/{{ $product->image }}" width="500px">
+        <img src="/image/{{ $annonces['photographie'] }}" width="500px">
 
     </div>
 
@@ -66,11 +66,14 @@
 
         <strong>prix:</strong>
 
-        {{ $annonce->prix }}
+        {{ $annonces['prix'] }}
 
     </div>
-
 </div>
+<a class= "{{ $annonces['id'] }}" href="{{ route('Updatepage',['id'=>$annonces['id']]) }}"> Update</a>
+<a class= "{{ $annonces['id'] }}" href='{{ route('Delete',['id'=>$annonces['id']]) }}'> Delete</a>
+<br><br>
+@endforeach
 
 </div>
 @endsection

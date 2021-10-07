@@ -17,7 +17,16 @@ class AnnonceController extends Controller
         return redirect()->route('home')
         ->with('success','Product add successfully');
     }
-    public function show(Request $annonce){
-        return view('show',compact($annonce));
+    public function show(){
+        $annonce = Annonce::all()->toArray();
+        return view('show',['annonce'=>$annonce]);
+    }
+    public function Delete($id){
+        $annonce = Annonce::where('id',$id)->delete();
+        $annonce = Annonce::all()->toArray();
+        return view('show',['annonce'=>$annonce]);
+    }
+    public function Updatepage($id){
+        return view('Updatepage',['id'=>$id]);
     }
 }

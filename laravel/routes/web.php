@@ -33,9 +33,9 @@ Route::post('/freeads', function () {
 // });
 Route::post('/annonce', [AnnonceController::class, "create"]);
 // Route::resource('annonce', AnnonceController::class);
-Route::get('/show', function () {
-    return view('show');
-})->name('show');
+Route::get('/show',[AnnonceController::class, "show"])->name('show');
+Route::get('/Updatepage/{id}',[AnnonceController::class, "Updatepage"])->name('Updatepage');
+Route::get('/Delete/{id}',[AnnonceController::class, "Delete"])->name('Delete');
 
 Auth::routes(['verify' => true]);
 
