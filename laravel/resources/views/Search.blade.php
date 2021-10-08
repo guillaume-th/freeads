@@ -6,7 +6,7 @@
 <div class="col-lg-12 margin-tb">
     <form action="/Search" method="post">
     @csrf
-    <input type="search" name="search">
+    <input type="search" name="search" id='search'>
     </form>
 
     <div class="pull-left">
@@ -26,7 +26,7 @@
 </div>
 
 
-@foreach ($annonce as $annonces)
+@foreach ($users as $user)
 <div class="row">
 
 <div class="col-xs-12 col-sm-12 col-md-12">
@@ -35,7 +35,7 @@
 
         <strong>Name:</strong>
 
-        {{ $annonces['titre']}}
+        {{ $user->titre }}
 
     </div>
 
@@ -47,7 +47,9 @@
 
         <strong>Details:</strong>
 
-        {{ $annonces['description'] }}
+        {{ $user->description }}
+
+
 
     </div>
 
@@ -59,7 +61,7 @@
 
         <strong>Image:</strong>
 
-        <img src="/storage/{{ $annonces['photographie'] }}" width="500px">
+        <img src="/storage/{{ $user->photographie }}" width="500px">
 
     </div>
 
@@ -70,12 +72,11 @@
 
         <strong>prix:</strong>
 
-        {{ $annonces['prix'] }}
+        {{ $user->prix }}
+
 
     </div>
 </div>
-<a class= "{{ $annonces['id'] }}" href="{{ route('Updatepage',['id'=>$annonces['id']]) }}"> Update</a>
-<a class= "{{ $annonces['id'] }}" href='{{ route('Delete',['id'=>$annonces['id']]) }}'> Delete</a>
 <br><br>
 @endforeach
 

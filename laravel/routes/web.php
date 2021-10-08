@@ -35,6 +35,8 @@ Route::post('/annonce', [AnnonceController::class, "create"]);
 // Route::resource('annonce', AnnonceController::class);
 Route::get('/show',[AnnonceController::class, "show"])->name('show');
 Route::get('/Updatepage/{id}',[AnnonceController::class, "Updatepage"])->name('Updatepage');
+Route::post('/Update',[AnnonceController::class, "Update"])->name('Update');
+Route::post('/Search',[AnnonceController::class, "Search"])->name('Search');
 Route::get('/Delete/{id}',[AnnonceController::class, "Delete"])->name('Delete');
 
 Auth::routes(['verify' => true]);
