@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Annonce;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class AnnonceController extends Controller
 {
@@ -16,6 +17,7 @@ class AnnonceController extends Controller
             'photographie' => $request->input('photographie'),
             'prix' => $request->input('prix'),
         ]);
+        // echo Storage::download($request->input('photographie'));
         return redirect()->route('home')
             ->with('success', 'Product add successfully');
     }
